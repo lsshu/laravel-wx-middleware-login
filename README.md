@@ -26,11 +26,28 @@ $ php artisan vendor:publish --provider="Vinkla\Hashids\HashidsServiceProvider"
 
 ```php
 'connections' => [
-	'wx_token' => [
-		'salt' => env('HASHIDS_WX_TOKEN_SALT', 'HASHIDS_WX_TOKEN_SALT'),
-		'length' => env('HASHIDS_WX_TOKEN_LENGTH', 40),
-	],
+  'wx_token' => [
+    'salt' => env('HASHIDS_WX_TOKEN_SALT', 'HASHIDS_WX_TOKEN_SALT'),
+    'length' => env('HASHIDS_WX_TOKEN_LENGTH', 40),
+  ],
 ],
+```
+
+> Authorization Method and Request Address
+
+```php
+Route::get('middleware',function (){
+  $callback_url = urlencode('http://localhost/middleware_callback?aa=bb');
+  $snsapi_type = 'snsapi_userinfo'; // snsapi_base
+  return redirect('http://server/wx-middleware-login/authorize_login?snsapi_type='.$snsapi_type.'&callback_url='.$callback_url);
+});
+
+Route::get('middleware_callback',function (Illuminate\Http\Request $request){
+  $data = $request->all();
+  // curl 自定义方法 httpsRequest get请求
+  $result = httpsRequest('http://server/wx-middleware-login/get_user_info?wx_token='.$data['wx_token']);
+  dump($result);
+});
 ```
 
 ## Contributing
