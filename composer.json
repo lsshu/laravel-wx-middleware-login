@@ -23,5 +23,12 @@
         "psr-4": {
             "Lsshu\\LaravelWxMiddlewareLogin\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lsshu\\LaravelWxMiddlewareLogin\\ServiceProvider"
+            ]
+        }
     }
 }
