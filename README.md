@@ -11,7 +11,27 @@ $ composer require lsshu/laravel-wx-middleware-login
 
 ## Usage
 
-TODO
+```shell
+$ php artisan vendor:publish --tag=wx-middleware-login-migrations
+```
+
+```shell
+$ php artisan migrate --path=database/migrations/wx_middleware
+```
+
+```shell
+$ php artisan vendor:publish --provider="Vinkla\Hashids\HashidsServiceProvider"
+```
+> Modify the configuration file "hashids.php"
+
+```php
+'connections' => [
+	'wx_token' => [
+		'salt' => env('HASHIDS_WX_TOKEN_SALT', 'HASHIDS_WX_TOKEN_SALT'),
+		'length' => env('HASHIDS_WX_TOKEN_LENGTH', 40),
+	],
+],
+```
 
 ## Contributing
 
