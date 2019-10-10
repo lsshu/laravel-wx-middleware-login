@@ -1,0 +1,27 @@
+{
+    "name": "lsshu/laravel-wx-middleware-login",
+    "description": "middleware login",
+    "type": "library",
+    "keywords": ["lsshu","laravel", "wechat","middleware","middleware-login"],
+    "homepage": "https://github.com/lsshu/laravel-wx-middleware-login",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lsshu",
+            "email": "admin@lsshu.cn"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "vinkla/hashids": "^6.0",
+        "lsshu/wechat": "^1.0"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Lsshu\\LaravelWxMiddlewareLogin\\": "src"
+        }
+    }
+}
